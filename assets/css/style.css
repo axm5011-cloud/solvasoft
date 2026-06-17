@@ -344,18 +344,41 @@ html.lang-en .hero-title { letter-spacing: -1px; }
 /* Work cards */
 .work-card { padding: 0; display: flex; flex-direction: column; }
 .work-thumb {
-  height: 200px;
+  height: 150px;
   display: grid; place-items: center;
   background:
-    radial-gradient(circle at 50% 120%, rgba(47,123,246,.28), transparent 60%),
+    radial-gradient(circle at 50% 130%, rgba(47,123,246,.30), transparent 62%),
     linear-gradient(160deg, #14204f, #0d1430);
   border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
 }
-.work-emoji { font-size: 4rem; transition: transform .4s var(--ease); filter: drop-shadow(0 8px 20px rgba(0,0,0,.4)); }
-.work-card:hover .work-emoji { transform: scale(1.18) translateY(-6px); }
-.work-body { padding: 1.8rem 1.7rem; }
-.work-body h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: .7rem; }
-.work-body p { color: var(--muted); font-size: .98rem; margin-bottom: 1.2rem; }
+.work-thumb::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(120,160,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,160,255,.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+}
+.work-ico {
+  position: relative;
+  z-index: 1;
+  width: 78px; height: 78px;
+  display: grid; place-items: center;
+  border-radius: 20px;
+  color: var(--cyan);
+  background: var(--grad-soft);
+  border: 1px solid rgba(56,189,248,.3);
+  box-shadow: 0 10px 30px -12px rgba(47,123,246,.7);
+  transition: transform .4s var(--ease), box-shadow .4s;
+}
+.work-ico svg { width: 38px; height: 38px; }
+.work-card:hover .work-ico { transform: scale(1.1) translateY(-4px) rotate(-4deg); box-shadow: 0 16px 36px -12px rgba(47,123,246,.9); }
+.work-body { padding: 1.6rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.work-body h3 { font-size: 1.12rem; font-weight: 800; margin-bottom: .6rem; }
+.work-body p { color: var(--muted); font-size: .95rem; margin-bottom: 1.1rem; flex: 1; }
 .tags { display: flex; flex-wrap: wrap; gap: .5rem; }
 .tags span {
   font-size: .82rem; font-weight: 600;
